@@ -111,3 +111,14 @@ body {
   padding-left: 5px;
   background-color: rgba(156, 55, 55, 0);
 }
+
+.steps p {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 14px;
+  color: hsl(231, 11%, 63%);
+}
+
+.steps span{
+  color: var(--neutralWhite);
+}
