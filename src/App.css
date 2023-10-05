@@ -119,6 +119,11 @@ body {
   color: hsl(231, 11%, 63%);
 }
 
-.steps span{
+.steps span {
   color: var(--neutralWhite);
+}
+
+.steps_container {
+  display: flex;
+  flex-direction: column;
 }
