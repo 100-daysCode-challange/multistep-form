@@ -18,7 +18,9 @@
 .error_message{
     padding-bottom: .3em;
 }
-
+.input_error{
+    border: var(--primaryStrawberryRed);
+}
 .error_message p{
     color: var(--primaryMarineBlue);
     font-weight: var(--medium-weigh);

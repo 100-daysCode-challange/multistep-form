@@ -20,7 +20,7 @@ function Info() {
         <div className="input_group">
           <div className="error_message">
             <p>Name</p>
-            <span id="error_name"></span>
+            <span id="error_name">{errors.name}</span>
           </div>
 
           <input
@@ -29,12 +29,15 @@ function Info() {
             name="name"
             id="infoName"
             placeholder="e.g. willson Mark"
+            className={errors.name ? "input_error" : ""}
+            onChange={handleChange}
+            onBlur={handlBlur}
           />
         </div>
         <div className="input_group">
           <div className="error_message">
             <p>Email Address</p>
-            <span id="error_email"></span>
+            <span id="error_email">{errors.email}</span>
           </div>
 
           <input
@@ -43,6 +46,9 @@ function Info() {
             name="email"
             id="infoEmail"
             placeholder="e.g. willsonMark@gmail.com"
+            className={errors.email ? "input_error" : ""}
+            onChange={handleChange}
+            onBlur={handlBlur}
           />
         </div>
         <div className="input_group">
@@ -57,6 +63,7 @@ function Info() {
             name="phoneNumber"
             id="infoNumber"
             placeholder="e.g. +47 234 567 78"
+            className={errors.phoneNumber ? "input_error" : ""}
             onChange={handleChange}
             onBlur={handlBlur}
           />
