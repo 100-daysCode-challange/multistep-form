@@ -1,7 +1,15 @@
 import React from "react";
 import "./info.css";
+import { useFormik } from "formik";
 
 function Info() {
+  const { values, errors, handleSubmit, handlBlur, handleChange } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phoneNumber: "",
+    },
+  });
   return (
     <div className="steps_container">
       <div className="info_step">
@@ -16,8 +24,9 @@ function Info() {
           </div>
 
           <input
+            value={values.name}
             type="text"
-            name=""
+            name="name"
             id="infoName"
             placeholder="e.g. willson Mark"
           />
@@ -29,8 +38,9 @@ function Info() {
           </div>
 
           <input
+            value={values.email}
             type="text"
-            name=""
+            name="email"
             id="infoEmail"
             placeholder="e.g. willsonMark@gmail.com"
           />
@@ -42,10 +52,13 @@ function Info() {
           </div>
 
           <input
+            value={values.phoneNumber}
             type="text"
-            name=""
+            name="phoneNumber"
             id="infoNumber"
             placeholder="e.g. +47 234 567 78"
+            onChange={handleChange}
+            onBlur={handlBlur}
           />
         </div>
 

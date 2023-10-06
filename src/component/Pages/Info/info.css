@@ -28,10 +28,9 @@
   height: 50px;
   border-radius: 8px;
   border: solid 1px var(--neutralLightGray);
+  padding: 1em;
 }
- input::placeholder{
-    padding: 1em;
- }
+
 .btn_container_step_one button {
   float: right;
   padding: 15px 25px;
