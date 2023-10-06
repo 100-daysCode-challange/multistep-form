@@ -51,7 +51,7 @@ body {
   border-radius: 10px;
   box-shadow: 20px 20px 20px var(--box-shadow);
   width: 1000px;
-  height: 568px;
+  padding: 1em;
 }
 
 .step_Display {
@@ -61,6 +61,7 @@ body {
   height: 568px;
   background-color: rgba(30, 16, 186, 0);
   background-image: url(/src/assets/images/bg-sidebar-desktop.svg);
+  
 }
 
 .circle {
@@ -123,7 +124,3 @@ body {
   color: var(--neutralWhite);
 }
 
-.steps_container {
-  display: flex;
-  flex-direction: column;
-}

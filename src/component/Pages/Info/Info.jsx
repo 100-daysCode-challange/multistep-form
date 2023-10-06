@@ -45,7 +45,7 @@ function Info() {
         />
 
         <div className="btn_container_step_one">
-          <button onclick="openStepTwo()">Next Step</button>
+          <button>Next Step</button>
         </div>
       </div>
     </div>
