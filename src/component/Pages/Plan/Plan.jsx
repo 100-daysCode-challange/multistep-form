@@ -64,14 +64,13 @@ function Plan() {
 
         <div className="switch">
           <p className="monthly">Monthly</p>
-          <lable className="check">
+          <div className="check">
             <input
               type="checkbox"
               id="switch"
-              onclick="reset()"
             />
             <span></span>
-          </lable>
+          </div>
           <p className="yearly">Yearly</p>
         </div>
         <div className="btn_container_step_two">
