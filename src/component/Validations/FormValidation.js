@@ -1,12 +1,7 @@
-import React from 'react';
+import * as Yup from "yup";
 
-
-function FormValidation() {
-
-
-  return (
-    <div>FormValidation</div>
-  )
-}
-
-export default FormValidation;
+export const userSchema = Yup.object().shape({
+  name: Yup.string().required("Full name is required!"),
+  email: Yup.string().email().required("Email is requires!"),
+  phoneNumber: Yup.string().required("phone number is required!").min(10).max(15),
+});

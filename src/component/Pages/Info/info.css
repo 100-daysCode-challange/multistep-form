@@ -16,10 +16,13 @@
     padding-bottom: 1.5em;
 }
 .error_message{
+    display: flex;
+    justify-content: space-between;
+    color: var(--primaryStrawberryRed);
     padding-bottom: .3em;
 }
-.input_error{
-    border: var(--primaryStrawberryRed);
+.input_group .input_error:focus{
+  border: solid var(--primaryStrawberryRed);
 }
 .error_message p{
     color: var(--primaryMarineBlue);
