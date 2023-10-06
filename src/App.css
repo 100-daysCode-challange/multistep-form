@@ -42,6 +42,14 @@ body {
   font-family: var(--font-family);
   background-color: var(--neutralLightGray);
 }
+
+body h1 {
+  color: var(--primaryMarineBlue);
+}
+
+body .description {
+  color: var(--neutralCoolGray);
+}
 .container {
   display: flex;
   background-color: var(--neutralWhite);
@@ -61,7 +69,6 @@ body {
   height: 568px;
   background-color: rgba(30, 16, 186, 0);
   background-image: url(/src/assets/images/bg-sidebar-desktop.svg);
-  
 }
 
 .circle {
@@ -80,6 +87,7 @@ body {
 
 .circle p {
   margin-top: 10px;
+  color: var(--neutralWhite);
 }
 .circle_1,
 .circle_2,
@@ -88,12 +96,20 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   border: solid 1px white;
   display: flex;
   justify-content: center;
   color: black;
 }
+
+.circle > .circle_1:first-child,
+.circle > .circle_1:first-child > p {
+  background-color: var(--primaryLightBlue);
+  border: none;
+  color: black;
+}
+
 
 .steps {
   position: relative;
@@ -122,5 +138,5 @@ body {
 
 .steps span {
   color: var(--neutralWhite);
+  font-weight: var(--bold-weight);
 }
-
