@@ -9,25 +9,35 @@
 }
 
 .info_step .description{
-    padding-bottom: 1.5em;
+    padding-bottom: 3em;
 }
 
 .input_group{
-    padding-bottom: 1em;
+    padding-bottom: 1.5em;
 }
 .error_message{
     padding-bottom: .3em;
 }
+
+.error_message p{
+    color: var(--primaryMarineBlue);
+    font-weight: var(--medium-weigh);
+}
 .info_step input {
   width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  border: solid 1px rgba(103, 92, 92, 0.628);
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px var(--neutralLightGray);
 }
  input::placeholder{
     padding: 1em;
  }
 .btn_container_step_one button {
   float: right;
-  padding: 10px 15px;
+  padding: 15px 25px;
+  background-color: var(--primaryMarineBlue);
+  color: var(--neutralWhite);
+  border-radius: 5px;
+  margin-top: 5em;
+  cursor: pointer;
 }
