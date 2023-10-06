@@ -54,7 +54,7 @@ function Info() {
         <div className="input_group">
           <div className="error_message">
             <p>Phone Number</p>
-            <span id="error_num"></span>
+            <span id="error_num">{errors.phoneNumber}</span>
           </div>
 
           <input
