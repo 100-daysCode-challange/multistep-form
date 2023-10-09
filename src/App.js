@@ -1,5 +1,6 @@
 import './App.css';
-import Adds from './component/Pages/Adds/Adds';
+import Summary from './component/Pages/Summary/Summary';
+// import Adds from './component/Pages/Adds/Adds';
 // import Info from './component/Pages/Info/Info';
 import Step from './component/StepDispaly/Step';
 
@@ -9,7 +10,8 @@ function App() {
     <div className="container">
       <Step />
       {/* <Info /> */}
-      <Adds />
+      {/* <Adds /> */}
+      <Summary />
     </div>
   );
 }
