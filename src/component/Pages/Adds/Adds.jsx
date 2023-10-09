@@ -13,7 +13,7 @@ function Adds() {
             </p>
           </div>
 
-          <div className="addOn_cont">
+          <div className="addOn_month">
             <div className="addOnn_btn">
               <div className="group">
                 <input
@@ -60,7 +60,54 @@ function Adds() {
               <p className="price">$2/mo</p>
             </div>
           </div>
-          <div className="btn_container_step_two">
+          <div className="addOn_year">
+            <div className="addOnn_btn">
+              <div className="group">
+                <input
+                  type="checkbox"
+                  name="addOnn"
+                  id="online_cont"
+                  value="1"
+                />
+                <div className="addOn">
+                  <p className="addSize">Online services</p>
+                  <span>Access to multiple games</span>
+                </div>
+              </div>
+              <p className="price">$10/mo</p>
+            </div>
+            <div className="addOnn_btn">
+              <div className="group">
+                <input
+                  type="checkbox"
+                  name="addOnn"
+                  id="storage_cont"
+                  value="2"
+                />
+                <div className="addOn">
+                  <p className="addSize">Larger storage</p>
+                  <span>Extra 1TB of cloud save</span>
+                </div>
+              </div>
+              <p className="price">$20/mo</p>
+            </div>
+            <div className="addOnn_btn">
+              <div className="group">
+                <input
+                  type="checkbox"
+                  name="addOnn"
+                  id="custom_cont"
+                  value="3"
+                />
+                <div className="addOn">
+                  <p className="addSize">Customizable profile</p>
+                  <span>Custom theme on your profile</span>
+                </div>
+              </div>
+              <p className="price">20/mo</p>
+            </div>
+          </div>
+          <div className="addOn_btn_container">
             <button className="goBack">Go back</button>
             <button className="next_step">Next Step</button>
           </div>
