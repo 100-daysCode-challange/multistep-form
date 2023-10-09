@@ -1,0 +1,18 @@
+
+
+.steps_container {
+  width: 50%;
+  height: 550px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.addOn_title h1{
+    padding-bottom: .2em;
+}
+
+.description{
+    padding-bottom: 3em;
+}
