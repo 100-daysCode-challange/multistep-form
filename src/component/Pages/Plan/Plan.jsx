@@ -39,31 +39,28 @@ function Plan() {
           </button>
         </div>
 
-        {/* <div className="monthlyPlan">
-          <button className="btnPlan" id="">
-            <img src="/assets/images/icon-arcade.svg" alt="" />
-
+        <div className="monthlyPlan" id="year_Plan">
+          <button className="btnPlan" id="arcade">
+            <img src={arcadeIcon} alt="" />
             <p>Arcade</p>
             <span className="yearlyPrice"> $90/yr</span>
             <label className="free">2 montsh free</label>
           </button>
 
-          <button className="btnPlan" id="">
-            <img src="/assets/images/icon-arcade.svg" alt="" />
-
+          <button className="btnPlan" id="advance">
+            <img src={advancedIcon} alt="" />
             <p>Advanced</p>
             <span className="yearlyPrice"> $120/yr</span>
             <label className="free">2 montsh free</label>
           </button>
 
-          <button className="btnPlan" id="">
-            <img src="/assets/images/icon-pro.svg" alt="" />
-
+          <button className="btnPlan" id="pro">
+            <img src={proIcon} alt="" />
             <p>pro</p>
             <span className="yearlyPrice"> $150/yr</span>
             <label className="free">2 montsh free</label>
           </button>
-        </div> */}
+        </div>
 
         <div className="switch">
           <p className="monthly">Monthly</p>
