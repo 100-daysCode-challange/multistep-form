@@ -1,5 +1,6 @@
 import React from "react";
-import arcadeIcon from "../../../assets/images/icon-arcade.svg"
+import "./plan.css";
+import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
 
@@ -7,10 +8,12 @@ function Plan() {
   return (
     <div className="steps_container">
       <div className="planSelect_container" id="planSelect_container">
-        <h1>Select Your plan</h1>
-        <p className="description">
-          You have the option of monthly or yearly billing
-        </p>
+        <div className="plan_title">
+          <h1>Select Your plan</h1>
+          <p className="description">
+            You have the option of monthly or yearly billing
+          </p>
+        </div>
 
         <div className="monthlyPlan" id="monthlyPlan">
           <button className="btnPlan" id="arcade">
@@ -20,14 +23,14 @@ function Plan() {
               $9/mo
             </span>
           </button>
-          <button className="btnPlan" id="arcade">
+          <button className="btnPlan" id="advance">
             <img src={advancedIcon} alt="svg icon arcade" />
             <p>Advance</p>
             <span className="monthlyPrice" id="monthlyPrice">
               $12/mo
             </span>
           </button>
-          <button className="btnPlan" id="arcade">
+          <button className="btnPlan" id="pro">
             <img src={proIcon} alt="svg icon arcade" />
             <p>Pro</p>
             <span className="monthlyPrice" id="monthlyPrice">
@@ -65,21 +68,14 @@ function Plan() {
         <div className="switch">
           <p className="monthly">Monthly</p>
           <div className="check">
-            <input
-              type="checkbox"
-              id="switch"
-            />
+            <input type="checkbox" id="switch" />
             <span></span>
           </div>
           <p className="yearly">Yearly</p>
         </div>
         <div className="btn_container_step_two">
-          <button className="goBack">
-            Go back
-          </button>
-          <button className="next_step">
-            Next Step
-          </button>
+          <button className="goBack">Go back</button>
+          <button className="next_step">Next Step</button>
         </div>
       </div>
     </div>
