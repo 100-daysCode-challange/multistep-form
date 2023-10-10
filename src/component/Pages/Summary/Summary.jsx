@@ -20,7 +20,7 @@ function Summary() {
                   <h4 id="summary_mode">Choose a plan</h4>
                   <button>Change</button>
                 </div>
-                <label for="" id="summary_price">
+                <label htmlFor="" id="summary_price">
                   150$/yr
                 </label>
               </div>
@@ -28,19 +28,19 @@ function Summary() {
               <span></span>
               <div className="summary_flex">
                 <p>Online service</p>
-                <label for="" id="onlinePrice">
+                <label htmlFor="" id="onlinePrice">
                   +0$
                 </label>
               </div>
               <div className="summary_flex">
                 <p>Larger storage</p>
-                <label for="" id="storagePrice">
+                <label htmlFor="" id="storagePrice">
                   +0$
                 </label>
               </div>
               <div className="summary_flex">
                 <p>Customizable profile</p>
-                <label for="" id="customizablePrice">
+                <label htmlFor="" id="customizablePrice">
                   +0$
                 </label>
               </div>
