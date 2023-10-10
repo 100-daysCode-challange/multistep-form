@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "./plan.css";
-import { useHistory } from "react-router-dom";
 import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
-import Adds from "../Adds/Adds";
 
-function Plan() {
+
+function Plan({ onNextStep }) {
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState("");
-  const [currentStep, setCurrentStep] = useState(2);
 
   const handleSwitchChange = () => {
     setIsMonthly(!isMonthly);
@@ -46,12 +44,11 @@ function Plan() {
   };
 
   const handleNextStep = () => {
-    setCurrentStep(currentStep + 1);
+    onNextStep();
   };
 
   return (
-    <div className="steps_container">
-      {currentStep === 2 && (
+      <div className="steps_container">
         <div className="planSelect_container" id="planSelect_container">
           <div className="plan_title">
             <h1>Select Your plan</h1>
@@ -115,9 +112,7 @@ function Plan() {
             </button>
           </div>
         </div>
-      )}
-      {currentStep === 3 && <Adds />}
-    </div>
+      </div>
   );
 }
 
