@@ -6,6 +6,7 @@ import Plan from "../Plan/Plan";
 
 function Info() {
   const [submitted, setSubmitted] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1)
 
   const { values, errors, handleSubmit, handleBlur, handleChange } = useFormik({
     initialValues: {
@@ -16,6 +17,7 @@ function Info() {
     validationSchema: userSchema,
     onSubmit: () => {
       setSubmitted(true);
+      setCurrentStep(2)
     },
   });
   console.log(errors);

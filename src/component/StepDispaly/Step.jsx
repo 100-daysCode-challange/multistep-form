@@ -1,19 +1,30 @@
 import React from "react";
+import "./step.css";
 
-function Step() {
+
+function Step({ currentStep }) {
+
   return (
     <div className="step_Display">
       <div className="circle">
-        <div className="circle_1">
+        <div
+          className={`circle_1 ${currentStep === 1 ? "active" : ""}`}
+        >
           <p>1</p>
         </div>
-        <div className="circle_2">
+        <div
+          className={`circle_2 ${currentStep === 2 ? "active" : ""}`}
+        >
           <p>2</p>
         </div>
-        <div className="circle_3">
+        <div
+          className={`circle_3 ${currentStep === 3 ? "active" : ""}`}
+        >
           <p>3</p>
         </div>
-        <div className="circle_4">
+        <div
+          className={`circle_4 ${currentStep === 4 ? "active" : ""}`}
+        >
           <p>4</p>
         </div>
       </div>
