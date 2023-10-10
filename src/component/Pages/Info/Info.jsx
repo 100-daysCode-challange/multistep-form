@@ -4,9 +4,8 @@ import { useFormik } from "formik";
 import { userSchema } from "../../Validations/FormValidation";
 import Plan from "../Plan/Plan";
 
-function Info() {
+function Info({ onNextStep }) {
   const [submitted, setSubmitted] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1)
 
   const { values, errors, handleSubmit, handleBlur, handleChange } = useFormik({
     initialValues: {
@@ -17,9 +16,10 @@ function Info() {
     validationSchema: userSchema,
     onSubmit: () => {
       setSubmitted(true);
-      setCurrentStep(2)
+      onNextStep();
     },
   });
+  
   console.log(errors);
 
   //   rendering the Plan component if submitted.

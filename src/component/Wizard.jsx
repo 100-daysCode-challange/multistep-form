@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import Info from "./Info";
-import Plan from "./Plan";
+import Info from "./Pages/Info/Info";
+import Plan from "./Pages/Plan/Plan";
+import Step from "./StepDispaly/Step";
 
 function Wizard() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
 
   const handleNextStep = () => {
-    setActiveStep(activeStep + 1);
+    // Update the current step as needed
+    setCurrentStep(currentStep + 1);
   };
 
   return (
-    <div>
-      <Step currentStep={activeStep} />
-      {activeStep === 1 ? (
+    <div className="wizard_container">
+      <Step currentStep={currentStep} />
+      {currentStep === 1 ? (
         <Info onNextStep={handleNextStep} />
-      ) : activeStep === 2 ? (
+      ) : currentStep === 2 ? (
         <Plan />
       ) : null}
     </div>
