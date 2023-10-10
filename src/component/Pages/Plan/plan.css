@@ -39,7 +39,7 @@
   color: var(--neutralCoolGray);
 }
 
-.btnPlan:hover {
+.btnPlan.selected {
   background-color: var(--primaryLightBlue);
   border: 1px solid var(--neutralCoolGray);
 }
