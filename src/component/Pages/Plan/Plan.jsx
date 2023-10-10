@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./plan.css";
+import { useHistory } from "react-router-dom";
 import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
+import Adds from "../Adds/Adds";
 
 function Plan() {
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState("");
+  const [currentStep, setCurrentStep] = useState(2);
 
   const handleSwitchChange = () => {
     setIsMonthly(!isMonthly);
@@ -42,67 +45,78 @@ function Plan() {
     }
   };
 
+  const handleNextStep = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
   return (
     <div className="steps_container">
-      <div className="planSelect_container" id="planSelect_container">
-        <div className="plan_title">
-          <h1>Select Your plan</h1>
-          <p className="description">
-            You have the option of monthly or yearly billing
-          </p>
-        </div>
+      {currentStep === 2 && (
+        <div className="planSelect_container" id="planSelect_container">
+          <div className="plan_title">
+            <h1>Select Your plan</h1>
+            <p className="description">
+              You have the option of monthly or yearly billing
+            </p>
+          </div>
 
-        <div className="monthlyPlan" id="monthlyPlan">
-          <button
-            className={`btnPlan ${selectedPlan === "arcade" ? "selected" : ""}`}
-            onClick={() => handlePlanClick("arcade")}
-          >
-            <img src={arcadeIcon} alt="svg icon arcade" />
-            <p>Arcade</p>
-            <span className="price">{isMonthly ? "$9/mo" : "$90/yr"}</span>
-            {!isMonthly && <label className="free">2 months free</label>}
-          </button>
-          <button
-            className={`btnPlan ${
-              selectedPlan === "advance" ? "selected" : ""
-            }`}
-            onClick={() => handlePlanClick("advance")}
-          >
-            <img src={advancedIcon} alt="svg icon arcade" />
-            <p>Advance</p>
-            <span className="price">{isMonthly ? "$12/mo" : "$120/yr"}</span>
-            {!isMonthly && <label className="free">2 months free</label>}
-          </button>
-          <button
-            className={`btnPlan ${selectedPlan === "pro" ? "selected" : ""}`}
-            onClick={() => handlePlanClick("pro")}
-          >
-            <img src={proIcon} alt="svg icon arcade" />
-            <p>Pro</p>
-            <span className="price">{isMonthly ? "$15/mo" : "$150/yr"}</span>
-            {!isMonthly && <label className="free">2 months free</label>}
-          </button>
-        </div>
+          <div className="monthlyPlan" id="monthlyPlan">
+            <button
+              className={`btnPlan ${
+                selectedPlan === "arcade" ? "selected" : ""
+              }`}
+              onClick={() => handlePlanClick("arcade")}
+            >
+              <img src={arcadeIcon} alt="svg icon arcade" />
+              <p>Arcade</p>
+              <span className="price">{isMonthly ? "$9/mo" : "$90/yr"}</span>
+              {!isMonthly && <label className="free">2 months free</label>}
+            </button>
+            <button
+              className={`btnPlan ${
+                selectedPlan === "advance" ? "selected" : ""
+              }`}
+              onClick={() => handlePlanClick("advance")}
+            >
+              <img src={advancedIcon} alt="svg icon arcade" />
+              <p>Advance</p>
+              <span className="price">{isMonthly ? "$12/mo" : "$120/yr"}</span>
+              {!isMonthly && <label className="free">2 months free</label>}
+            </button>
+            <button
+              className={`btnPlan ${selectedPlan === "pro" ? "selected" : ""}`}
+              onClick={() => handlePlanClick("pro")}
+            >
+              <img src={proIcon} alt="svg icon arcade" />
+              <p>Pro</p>
+              <span className="price">{isMonthly ? "$15/mo" : "$150/yr"}</span>
+              {!isMonthly && <label className="free">2 months free</label>}
+            </button>
+          </div>
 
-        {/* Toggle between month and year */}
-        <div className="toggle" id="toggle">
-          <p className="monthly">Yearly</p>
-          <label class="switch">
-            <input
-              type="checkbox"
-              checked={isMonthly}
-              onChange={handleSwitchChange}
-            />
-            <span class="slider round"></span>
-          </label>
-          <p className="yearly">Monthly</p>
-        </div>
+          {/* Toggle between month and year */}
+          <div className="toggle" id="toggle">
+            <p className="monthly">Yearly</p>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={isMonthly}
+                onChange={handleSwitchChange}
+              />
+              <span className="slider round"></span>
+            </label>
+            <p className="yearly">Monthly</p>
+          </div>
 
-        <div className="btn_container_step_two">
-          <button className="goBack">Go back</button>
-          <button className="next_step">Next Step</button>
+          <div className="btn_container_step_two">
+            <button className="goBack">Go back</button>
+            <button className="next_step" onClick={handleNextStep}>
+              Next Step
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+      {currentStep === 3 && <Adds />}
     </div>
   );
 }

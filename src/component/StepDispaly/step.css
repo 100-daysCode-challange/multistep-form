@@ -34,18 +34,14 @@
 .circle_2.active,
 .circle_3.active,
 .circle_4.active {
-  background-color: var(--primaryMarineBlue);
-  border: none;
-  color: var(--neutralWhite);
-}
-
-/* 
-.circle > .circle_1:first-child,
-.circle > .circle_1:first-child > p {
   background-color: var(--primaryLightBlue);
   border: none;
   color: black;
-} */
+}
+.circle .active p{
+    color: black;
+}
+
 
 .steps {
   position: relative;
