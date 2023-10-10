@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import "./plan.css";
 import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
 
 function Plan() {
+  const [isMonthly, setIsMonthly] = useState(true);
+  const [selectedPlan, setSelectedPlan] = useState("");
+
+  const handleSwitchChange = () => {
+    setIsMonthly(!isMonthly);
+  };
+
+  const handlePlanClick = (planId) => {
+    setSelectedPlan(planId);
+  };
+
+  const getPlanPrice = () => {
+    if (isMonthly) {
+      switch (selectedPlan) {
+        case "arcade":
+          return "$9/mo";
+        case "advance":
+          return "$12/mo";
+        case "pro":
+          return "$15/mo";
+        default:
+          return "";
+      }
+    } else {
+      switch (selectedPlan) {
+        case "arcade":
+          return "$90/yr 2 months free";
+        case "advance":
+          return "$120/yr 2 months free";
+        case "pro":
+          return "$150/yr 2 months free";
+        default:
+          return "";
+      }
+    }
+  };
+
   return (
     <div className="steps_container">
       <div className="planSelect_container" id="planSelect_container">
@@ -16,60 +53,51 @@ function Plan() {
         </div>
 
         <div className="monthlyPlan" id="monthlyPlan">
-          <button className="btnPlan" id="arcade">
+          <button
+            className={`btnPlan ${selectedPlan === "arcade" ? "selected" : ""}`}
+            onClick={() => handlePlanClick("arcade")}
+          >
             <img src={arcadeIcon} alt="svg icon arcade" />
             <p>Arcade</p>
-            <span className="monthlyPrice" id="monthlyPrice">
-              $9/mo
-            </span>
+            <span className="price">{isMonthly ? "$9/mo" : "$90/yr"}</span>
+            {!isMonthly && <label className="free">2 months free</label>}
           </button>
-          <button className="btnPlan" id="advance">
+          <button
+            className={`btnPlan ${
+              selectedPlan === "advance" ? "selected" : ""
+            }`}
+            onClick={() => handlePlanClick("advance")}
+          >
             <img src={advancedIcon} alt="svg icon arcade" />
             <p>Advance</p>
-            <span className="monthlyPrice" id="monthlyPrice">
-              $12/mo
-            </span>
+            <span className="price">{isMonthly ? "$12/mo" : "$120/yr"}</span>
+            {!isMonthly && <label className="free">2 months free</label>}
           </button>
-          <button className="btnPlan" id="pro">
+          <button
+            className={`btnPlan ${selectedPlan === "pro" ? "selected" : ""}`}
+            onClick={() => handlePlanClick("pro")}
+          >
             <img src={proIcon} alt="svg icon arcade" />
             <p>Pro</p>
-            <span className="monthlyPrice" id="monthlyPrice">
-              $15/mo
-            </span>
+            <span className="price">{isMonthly ? "$15/mo" : "$150/yr"}</span>
+            {!isMonthly && <label className="free">2 months free</label>}
           </button>
         </div>
 
-        <div className="monthlyPlan" id="year_Plan">
-          <button className="btnPlan" id="arcade">
-            <img src={arcadeIcon} alt="" />
-            <p>Arcade</p>
-            <span className="yearlyPrice"> $90/yr</span>
-            <label className="free">2 montsh free</label>
-          </button>
-
-          <button className="btnPlan" id="advance">
-            <img src={advancedIcon} alt="" />
-            <p>Advanced</p>
-            <span className="yearlyPrice"> $120/yr</span>
-            <label className="free">2 montsh free</label>
-          </button>
-
-          <button className="btnPlan" id="pro">
-            <img src={proIcon} alt="" />
-            <p>pro</p>
-            <span className="yearlyPrice"> $150/yr</span>
-            <label className="free">2 montsh free</label>
-          </button>
+        {/* Toggle between month and year */}
+        <div className="toggle" id="toggle">
+          <p className="monthly">Yearly</p>
+          <label class="switch">
+            <input
+              type="checkbox"
+              checked={isMonthly}
+              onChange={handleSwitchChange}
+            />
+            <span class="slider round"></span>
+          </label>
+          <p className="yearly">Monthly</p>
         </div>
 
-        <div className="switch">
-          <p className="monthly">Monthly</p>
-          <div className="check">
-            <input type="checkbox" id="switch" />
-            <span></span>
-          </div>
-          <p className="yearly">Yearly</p>
-        </div>
         <div className="btn_container_step_two">
           <button className="goBack">Go back</button>
           <button className="next_step">Next Step</button>
