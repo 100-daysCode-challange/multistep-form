@@ -17,37 +17,38 @@ function Plan({ onNextStep }) {
     setSelectedPlan(planId);
   };
 
-  const getPlanPrice = () => {
-    if (isMonthly) {
-      switch (selectedPlan) {
-        case "arcade":
-          return "$9/mo";
-        case "advance":
-          return "$12/mo";
-        case "pro":
-          return "$15/mo";
-        default:
-          return "";
-      }
-    } else {
-      switch (selectedPlan) {
-        case "arcade":
-          return "$90/yr 2 months free";
-        case "advance":
-          return "$120/yr 2 months free";
-        case "pro":
-          return "$150/yr 2 months free";
-        default:
-          return "";
-      }
-    }
-  };
+  // const getPlanPrice = () => {
+  //   if (isMonthly) {
+  //     switch (selectedPlan) {
+  //       case "arcade":
+  //         return "$9/mo";
+  //       case "advance":
+  //         return "$12/mo";
+  //       case "pro":
+  //         return "$15/mo";
+  //       default:
+  //         return "";
+  //     }
+  //   } else {
+  //     switch (selectedPlan) {
+  //       case "arcade":
+  //         return "$90/yr 2 months free";
+  //       case "advance":
+  //         return "$120/yr 2 months free";
+  //       case "pro":
+  //         return "$150/yr 2 months free";
+  //       default:
+  //         return "";
+  //     }
+  //   }
+  // };
 
   const handleNextStep = () => {
     onNextStep();
   };
 
   return (
+    <>
       <div className="steps_container">
         <div className="planSelect_container" id="planSelect_container">
           <div className="plan_title">
@@ -113,6 +114,7 @@ function Plan({ onNextStep }) {
           </div>
         </div>
       </div>
+    </>
   );
 }
 
