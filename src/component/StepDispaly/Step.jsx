@@ -4,8 +4,6 @@ import "./step.css";
 
 function Step({ currentStep }) {
 
-  console.log("currentStep in Step component:", currentStep);
-
   return (
     <div className="step_Display">
       <div className="circle">
