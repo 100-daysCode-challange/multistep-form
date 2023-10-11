@@ -5,7 +5,7 @@ import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
 
 
-function Plan({ onNextStep }) {
+function Plan({ onNextStep, onGoBack }) {
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState("");
 
@@ -46,6 +46,12 @@ function Plan({ onNextStep }) {
   const handleNextStep = () => {
     onNextStep();
   };
+
+  const handleGoBack = () => {
+    if(onGoBack){
+      onGoBack();
+    }
+  }
 
   return (
     <>
@@ -107,7 +113,7 @@ function Plan({ onNextStep }) {
           </div>
 
           <div className="btn_container_step_two">
-            <button className="goBack">Go back</button>
+            <button className="goBack" onClick={handleGoBack}>Go back</button>
             <button className="next_step" onClick={handleNextStep}>
               Next Step
             </button>

@@ -1,11 +1,17 @@
 import React from "react";
 import "./add.css";
 
-function Adds({ onNextStep }) {
-
+function Adds({ onNextStep, onGoBack }) {
   const handleNextStep = () => {
     onNextStep();
   };
+
+  const handleGoBack = () => {
+    if (onGoBack) {
+      onGoBack();
+    }
+  };
+
   return (
     <>
       <div className="steps_container">
@@ -112,7 +118,7 @@ function Adds({ onNextStep }) {
             </div>
           </div>
           <div className="addOn_btn_container">
-            <button className="goBack">Go back</button>
+            <button className="goBack" onClick={handleGoBack}>Go back</button>
             <button className="next_step" onClick={handleNextStep}>
               Next Step
             </button>

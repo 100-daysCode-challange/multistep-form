@@ -1,7 +1,13 @@
 import React from "react";
 import "./summary.css";
 
-function Summary() {
+function Summary({ onGoBack }) {
+  const handleGoBack = () => {
+    if (onGoBack) {
+      onGoBack();
+    }
+  };
+
   return (
     <div className="steps_container">
       <div className="stepSummary" id="stepSummary">
@@ -53,7 +59,7 @@ function Summary() {
             <span className="dollar">170$</span>
           </div>
           <div className="buttonContainerStepFour">
-            <button className="goBack">Go back</button>
+            <button className="goBack" onClick={handleGoBack}>Go back</button>
             <button className="next_step">Confirm</button>
           </div>
         </div>
