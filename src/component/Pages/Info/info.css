@@ -61,4 +61,11 @@
   .error_message span{
     font-size: var(--extra-small);
   }
+
+  .btn_container_step_one  {
+    width: 100%;
+    position: relative;
+    background-color: var(--neutralWhite);
+    margin-top: 3em;
+  }
 }

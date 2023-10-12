@@ -181,4 +181,12 @@ input:checked + .slider:before {
   .btnPlan span{
     margin: 0;
   }
+
+  .btn_container_step_two{
+    position: relative;
+    bottom: -100px;
+    padding-top: 0;
+    padding: 1em;
+   background-color: var(--neutralWhite);
+  }
 }

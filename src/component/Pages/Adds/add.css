@@ -82,3 +82,13 @@ input[type="checkbox" i] {
   cursor: pointer;
   font-size: 16px;
 }
+
+@media (max-width: 1000px) {
+  .addOn_btn_container {
+    position: relative;
+    bottom: -150px;
+    padding-top: 0;
+    padding: 1em;
+    background-color: var(--neutralWhite);
+  }
+}

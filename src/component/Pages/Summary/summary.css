@@ -102,21 +102,28 @@
     padding: 20px;
   }
 
-  .summary_title h1{
+  .summary_title h1 {
     text-align: center;
   }
 
-  .descrition{
+  .descrition {
     font-size: 15px;
     text-align: center;
   }
 
-  .container_summary{
+  .container_summary {
     padding: 0;
   }
 
-  .summary_flex{
+  .summary_flex {
     font-size: var(--extra-small);
   }
 
+  .buttonContainerStepFour {
+    position: relative;
+    bottom: -180px;
+    padding-top: 0;
+    padding: 1em;
+    background-color: var(--neutralWhite);
+  }
 }
