@@ -4,7 +4,6 @@ import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
 
-
 function Plan({ onNextStep, onGoBack }) {
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState("");
@@ -48,10 +47,10 @@ function Plan({ onNextStep, onGoBack }) {
   };
 
   const handleGoBack = () => {
-    if(onGoBack){
+    if (onGoBack) {
       onGoBack();
     }
-  }
+  };
 
   return (
     <>
@@ -72,9 +71,11 @@ function Plan({ onNextStep, onGoBack }) {
               onClick={() => handlePlanClick("arcade")}
             >
               <img src={arcadeIcon} alt="svg icon arcade" />
-              <p>Arcade</p>
-              <span className="price">{isMonthly ? "$9/mo" : "$90/yr"}</span>
-              {!isMonthly && <label className="free">2 months free</label>}
+              <span className="btnPlan_info">
+                <p>Arcade</p>
+                <span className="price">{isMonthly ? "$9/mo" : "$90/yr"}</span>
+                {!isMonthly && <label className="free">2 months free</label>}
+              </span>
             </button>
             <button
               className={`btnPlan ${
@@ -83,18 +84,26 @@ function Plan({ onNextStep, onGoBack }) {
               onClick={() => handlePlanClick("advance")}
             >
               <img src={advancedIcon} alt="svg icon arcade" />
-              <p>Advance</p>
-              <span className="price">{isMonthly ? "$12/mo" : "$120/yr"}</span>
-              {!isMonthly && <label className="free">2 months free</label>}
+              <span className="btnPlan_info">
+                <p>Advance</p>
+                <span className="price">
+                  {isMonthly ? "$12/mo" : "$120/yr"}
+                </span>
+                {!isMonthly && <label className="free">2 months free</label>}
+              </span>
             </button>
             <button
               className={`btnPlan ${selectedPlan === "pro" ? "selected" : ""}`}
               onClick={() => handlePlanClick("pro")}
             >
               <img src={proIcon} alt="svg icon arcade" />
-              <p>Pro</p>
-              <span className="price">{isMonthly ? "$15/mo" : "$150/yr"}</span>
-              {!isMonthly && <label className="free">2 months free</label>}
+              <span className="btnPlan_info">
+                <p>Pro</p>
+                <span className="price">
+                  {isMonthly ? "$15/mo" : "$150/yr"}
+                </span>
+                {!isMonthly && <label className="free">2 months free</label>}
+              </span>
             </button>
           </div>
 
@@ -113,7 +122,9 @@ function Plan({ onNextStep, onGoBack }) {
           </div>
 
           <div className="btn_container_step_two">
-            <button className="goBack" onClick={handleGoBack}>Go back</button>
+            <button className="goBack" onClick={handleGoBack}>
+              Go back
+            </button>
             <button className="next_step" onClick={handleNextStep}>
               Next Step
             </button>

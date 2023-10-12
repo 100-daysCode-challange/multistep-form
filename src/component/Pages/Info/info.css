@@ -23,6 +23,10 @@
     color: var(--primaryStrawberryRed);
     padding-bottom: .3em;
 }
+
+.error_message span{
+  font-size: var(--small-font);
+}
 .input_group .input_error:focus{
   border: solid var(--primaryStrawberryRed);
 }
@@ -46,4 +50,15 @@
   border-radius: 5px;
   margin-top: 5em;
   cursor: pointer;
+}
+
+
+@media (max-width:1000px) {
+  .error_message{
+    flex-direction: column;
+  }
+
+  .error_message span{
+    font-size: var(--extra-small);
+  }
 }

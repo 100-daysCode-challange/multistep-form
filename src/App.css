@@ -51,17 +51,6 @@ body h1 {
 body .description {
   color: var(--neutralCoolGray);
 }
-/* .container {
-  display: flex;
-  background-color: var(--neutralWhite);
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 10px;
-  box-shadow: 20px 20px 20px var(--box-shadow);
-  width: 1000px;
-  padding: 1em;
-} */
 .wizard_container {
   display: flex;
   background-color: var(--neutralWhite);
@@ -70,8 +59,9 @@ body .description {
   margin-right: auto;
   border-radius: 10px;
   box-shadow: 20px 20px 20px var(--box-shadow);
-  width: 1000px;
   padding: 1em;
+  height: auto;
+  width: 1000px;
 }
 
 .step_Display {
@@ -81,4 +71,12 @@ body .description {
   height: 568px;
   background-color: rgba(30, 16, 186, 0);
   background-image: url(/src/assets/images/bg-sidebar-desktop.svg);
+}
+
+
+@media (max-width: 1000px) {
+  .wizard_container{
+    width: 100%;
+    padding: 0;
+  }
 }

@@ -159,3 +159,26 @@ input:checked + .slider:before {
   cursor: pointer;
   font-size: 16px;
 }
+
+
+@media (max-width: 1000px) {
+  .monthlyPlan{
+    flex-direction: column;
+    width: 100%;
+  }
+  .btnPlan{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    padding: 1em;
+    margin: .2em;
+  }
+
+  .btnPlan img,
+  .btnPlan p,
+  .btnPlan span{
+    margin: 0;
+  }
+}

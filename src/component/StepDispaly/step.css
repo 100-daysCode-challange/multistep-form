@@ -1,3 +1,4 @@
+
 .circle {
   position: relative;
   background-color: rgba(220, 20, 60, 0);
@@ -75,14 +76,16 @@
 
 @media (max-width: 1000px) {
   .container {
+    position: relative;
     flex-direction: column;
     background-color: hsl(227, 36%, 90%);
     margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 20px 20px 20px rgba(47, 18, 18, 0.101);
-    width: 375px;
-    height: 680px;
+    width: 100%;
+    max-width: 500px;
+    height: 90vh;
     padding: 0;
   }
 
@@ -93,6 +96,8 @@
     height: 172px;
     background-color: rgba(30, 16, 186, 0);
     background-image: url(../../assets/images/bg-sidebar-mobile.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 10px;
   }
 
