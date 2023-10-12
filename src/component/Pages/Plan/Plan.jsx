@@ -7,6 +7,7 @@ import proIcon from "../../../assets/images/icon-pro.svg";
 function Plan({ onNextStep, onGoBack }) {
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState("");
+  const [isNextStepDisabled, setIsNextStepDisabled] = useState(true);
 
   const handleSwitchChange = () => {
     setIsMonthly(!isMonthly);
@@ -14,36 +15,16 @@ function Plan({ onNextStep, onGoBack }) {
 
   const handlePlanClick = (planId) => {
     setSelectedPlan(planId);
+    setIsNextStepDisabled(false);
   };
 
-  // const getPlanPrice = () => {
-  //   if (isMonthly) {
-  //     switch (selectedPlan) {
-  //       case "arcade":
-  //         return "$9/mo";
-  //       case "advance":
-  //         return "$12/mo";
-  //       case "pro":
-  //         return "$15/mo";
-  //       default:
-  //         return "";
-  //     }
-  //   } else {
-  //     switch (selectedPlan) {
-  //       case "arcade":
-  //         return "$90/yr 2 months free";
-  //       case "advance":
-  //         return "$120/yr 2 months free";
-  //       case "pro":
-  //         return "$150/yr 2 months free";
-  //       default:
-  //         return "";
-  //     }
-  //   }
-  // };
+  const getPrice = (price) =>
+    isMonthly ? `$${price}/mo` : `$${price}/yr 2 months free`;
 
   const handleNextStep = () => {
-    onNextStep();
+    if (!isNextStepDisabled) {
+      onNextStep(selectedPlan);
+    }
   };
 
   const handleGoBack = () => {
@@ -53,85 +34,67 @@ function Plan({ onNextStep, onGoBack }) {
   };
 
   return (
-    <>
-      <div className="steps_container">
-        <div className="planSelect_container" id="planSelect_container">
-          <div className="plan_title">
-            <h1>Select Your plan</h1>
-            <p className="description">
-              You have the option of monthly or yearly billing
-            </p>
-          </div>
+    <div className="steps_container">
+      <div className="planSelect_container" id="planSelect_container">
+        <div className="plan_title">
+          <h1>Select Your plan</h1>
+          <p className="description">
+            You have the option of monthly or yearly billing
+          </p>
+        </div>
 
-          <div className="monthlyPlan" id="monthlyPlan">
+        <div className="monthlyPlan" id="monthlyPlan">
+          {[
+            { plan: "arcade", icon: arcadeIcon, label: "Arcade" },
+            { plan: "advance", icon: advancedIcon, label: "Advance" },
+            { plan: "pro", icon: proIcon, label: "Pro" },
+          ].map(({ plan, icon, label }) => (
             <button
-              className={`btnPlan ${
-                selectedPlan === "arcade" ? "selected" : ""
-              }`}
-              onClick={() => handlePlanClick("arcade")}
+              key={plan}
+              className={`btnPlan ${selectedPlan === plan ? "selected" : ""}`}
+              onClick={() => handlePlanClick(plan)}
             >
-              <img src={arcadeIcon} alt="svg icon arcade" />
+              <img src={icon} alt={`svg icon ${plan}`} />
               <span className="btnPlan_info">
-                <p>Arcade</p>
-                <span className="price">{isMonthly ? "$9/mo" : "$90/yr"}</span>
-                {!isMonthly && <label className="free">2 months free</label>}
-              </span>
-            </button>
-            <button
-              className={`btnPlan ${
-                selectedPlan === "advance" ? "selected" : ""
-              }`}
-              onClick={() => handlePlanClick("advance")}
-            >
-              <img src={advancedIcon} alt="svg icon arcade" />
-              <span className="btnPlan_info">
-                <p>Advance</p>
+                <p>{label}</p>
                 <span className="price">
-                  {isMonthly ? "$12/mo" : "$120/yr"}
+                  {getPrice(
+                    plan === "arcade" ? 9 : plan === "advance" ? 12 : 15
+                  )}
                 </span>
                 {!isMonthly && <label className="free">2 months free</label>}
               </span>
             </button>
-            <button
-              className={`btnPlan ${selectedPlan === "pro" ? "selected" : ""}`}
-              onClick={() => handlePlanClick("pro")}
-            >
-              <img src={proIcon} alt="svg icon arcade" />
-              <span className="btnPlan_info">
-                <p>Pro</p>
-                <span className="price">
-                  {isMonthly ? "$15/mo" : "$150/yr"}
-                </span>
-                {!isMonthly && <label className="free">2 months free</label>}
-              </span>
-            </button>
-          </div>
+          ))}
+        </div>
 
-          {/* Toggle between month and year */}
-          <div className="toggle" id="toggle">
-            <p className="monthly">Yearly</p>
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={isMonthly}
-                onChange={handleSwitchChange}
-              />
-              <span className="slider round"></span>
-            </label>
-            <p className="yearly">Monthly</p>
-          </div>
+        <div className="toggle" id="toggle">
+          <p className="monthly">Yearly</p>
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={isMonthly}
+              onChange={handleSwitchChange}
+            />
+            <span className="slider round"></span>
+          </label>
+          <p className="yearly">Monthly</p>
+        </div>
 
-          <div className="btn_container_step_two">
-            <button className="goBack" onClick={handleGoBack}>
-              Go back
-            </button>
-            <button className="next_step" onClick={handleNextStep}>
-              Next Step
-            </button>
-          </div>
+        <div className="btn_container_step_two">
+          <button className="goBack" onClick={handleGoBack}>
+            Go back
+          </button>
+          <button
+            className={`next_step ${isNextStepDisabled ? "disabled" : ""}`}
+            onClick={handleNextStep}
+            disabled={isNextStepDisabled}
+          >
+            Next Step
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

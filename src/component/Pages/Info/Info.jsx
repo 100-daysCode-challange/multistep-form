@@ -20,7 +20,7 @@ function Info({ onNextStep }) {
     },
   });
   
-  console.log(errors);
+  // console.log(errors);
 
   //   rendering the Plan component if submitted.
   if (submitted) {

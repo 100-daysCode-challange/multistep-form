@@ -59,7 +59,9 @@ function Summary({ onGoBack }) {
             <span className="dollar">170$</span>
           </div>
           <div className="buttonContainerStepFour">
-            <button className="goBack" onClick={handleGoBack}>Go back</button>
+            <button className="goBack" onClick={handleGoBack}>
+              Go back
+            </button>
             <button className="next_step">Confirm</button>
           </div>
         </div>
