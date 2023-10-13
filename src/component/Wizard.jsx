@@ -31,6 +31,12 @@ function Wizard() {
     }
   };
 
+  const handleChangePlan = () => {
+    if (currentStep >= 3) {
+      setCurrentStep(2)
+    }
+  }
+
   return (
     <div className="wizard_container">
       <Step currentStep={currentStep} />
@@ -46,7 +52,7 @@ function Wizard() {
         <Adds
           onNextStep={handleNextStep}
           onGoBack={handleGoBack}
-          selectedAddOns={selectedAddOns} 
+          selectedAddOns={selectedAddOns}
         />
       ) : null}
       {currentStep === 4 ? (
@@ -55,11 +61,10 @@ function Wizard() {
           onGoBack={handleGoBack}
           selectedPlan={selectedPlan}
           selectedAddOns={selectedAddOns}
+          handleChangePlan={handleChangePlan}
         />
       ) : null}
-      {currentStep === 5 ? (
-        <ThankYouPage />
-      ) : null}
+      {currentStep === 5 ? <ThankYouPage /> : null}
     </div>
   );
 }

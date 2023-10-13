@@ -1,7 +1,7 @@
 import React from "react";
 import "./summary.css";
 
-function Summary({ onGoBack, onNextStep }) {
+function Summary({ onGoBack, onNextStep, handleChangePlan }) {
   const handleGoBack = () => {
     if (onGoBack) {
       onGoBack();
@@ -14,6 +14,13 @@ function Summary({ onGoBack, onNextStep }) {
       onNextStep(5); // Pass the step number where ThankYouPage should be displayed
     }
   };
+
+  const handleChange = () => {
+    if (handleChangePlan) {
+      handleChangePlan();
+    }
+  };
+
 
   return (
     <div className="steps_container">
@@ -31,7 +38,7 @@ function Summary({ onGoBack, onNextStep }) {
               <div className="summary_flex">
                 <div>
                   <h4 id="summary_mode">Choose a plan</h4>
-                  <button>Change</button>
+                  <button onClick={handleChange}>Change</button>
                 </div>
                 <label htmlFor="" id="summary_price">
                   150$/yr
