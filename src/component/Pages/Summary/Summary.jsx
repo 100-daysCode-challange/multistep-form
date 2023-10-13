@@ -1,10 +1,17 @@
 import React from "react";
 import "./summary.css";
 
-function Summary({ onGoBack }) {
+function Summary({ onGoBack, onNextStep }) {
   const handleGoBack = () => {
     if (onGoBack) {
       onGoBack();
+    }
+  };
+
+  const handleConfirm = () => {
+    // Assuming you want to advance to step 5 after confirming
+    if (onNextStep) {
+      onNextStep(5); // Pass the step number where ThankYouPage should be displayed
     }
   };
 
@@ -62,7 +69,9 @@ function Summary({ onGoBack }) {
             <button className="goBack" onClick={handleGoBack}>
               Go back
             </button>
-            <button className="next_step">Confirm</button>
+            <button className="next_step" onClick={handleConfirm}>
+              Confirm
+            </button>
           </div>
         </div>
       </div>

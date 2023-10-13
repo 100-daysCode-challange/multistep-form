@@ -84,7 +84,7 @@ function Adds({ onNextStep, onGoBack }) {
                   <span>{addOn.description}</span>
                 </div>
               </div>
-              <p className="price">$ {addOn.price}</p>
+              <p className="price">+$ {addOn.price}</p>
             </div>
           ))}
         </div>

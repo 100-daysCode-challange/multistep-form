@@ -4,6 +4,7 @@ import Plan from "./Pages/Plan/Plan";
 import Adds from "./Pages/Adds/Adds";
 import Summary from "./Pages/Summary/Summary";
 import Step from "./StepDispaly/Step";
+import ThankYouPage from "./Pages/ThankyouPage/ThankYouPage";
 
 function Wizard() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -55,6 +56,9 @@ function Wizard() {
           selectedPlan={selectedPlan}
           selectedAddOns={selectedAddOns}
         />
+      ) : null}
+      {currentStep === 5 ? (
+        <ThankYouPage />
       ) : null}
     </div>
   );

@@ -1,0 +1,28 @@
+.stepThankYou {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  margin-top: 30%;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px; /* Adjust the width as needed */
+}
+
+/* Style for the image */
+.stepThankYou img {
+  max-width: 100px; /* Adjust the image size as needed */
+}
+
+/* Additional styles for headings and paragraphs can be added as needed */
+.stepThankYou h1 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.stepThankYou p {
+  font-size: 16px;
+  margin: 10px 0;
+}
