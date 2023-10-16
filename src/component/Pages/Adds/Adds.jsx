@@ -1,28 +1,56 @@
 import React, { useState } from "react";
 import "./add.css";
+import Addon from "./Addon"; // Import the new Addon component
 
 function Adds({ onNextStep, onGoBack }) {
   const [selectedAddOns, setSelectedAddOns] = useState([]); // Track selected add-ons
 
-  const handleAddOnClick = (addOn) => {
-    if (selectedAddOns.some((selected) => selected.id === addOn.id)) {
-      // If the add-on is already selected, unselect it
-      setSelectedAddOns(
-        selectedAddOns.filter((selected) => selected.id !== addOn.id)
-      );
-    } else {
-      // If the add-on is not selected, select it
-      setSelectedAddOns([...selectedAddOns, addOn]);
-      console.log("Selected Add-On:", addOn); // Log the selected add-on
-    }
-  };
+  // Define your add-ons data here
+  const addOns = [
+    {
+      id: 1,
+      label: "Online services",
+      description: "Access to multiple games",
+      price: 1,
+    },
+    {
+      id: 2,
+      label: "Larger storage",
+      description: "Extra 1TB of cloud save",
+      price: 2,
+    },
+    {
+      id: 3,
+      label: "Customizable profile",
+      description: "Custom theme on your profile",
+      price: 2,
+    },
+    // Add more add-ons as needed
+  ];
 
-  console.log("Selected Add-Ons:", selectedAddOns);
+  const handleAddOnClick = (id) => {
+    const selectedAddOn = addOns.find((addon) => addon.id === id);
+
+    if (selectedAddOn) {
+      console.log("Selected Add-On:");
+      console.log("Name:", selectedAddOn.label);
+      console.log("Price:", selectedAddOn.price);
+      console.log("Description:", selectedAddOn.description);
+    }
+
+    const updatedAddOns = selectedAddOns.includes(id)
+      ? selectedAddOns.filter((selected) => selected !== id)
+      : [...selectedAddOns, id];
+    setSelectedAddOns(updatedAddOns);
+  };
 
 
   const handleNextStep = () => {
     if (selectedAddOns.length > 0) {
-      onNextStep(selectedAddOns); // Pass the selected add-ons to the parent component
+      const selectedAddOnObjects = addOns.filter((addon) =>
+        selectedAddOns.includes(addon.id)
+      );
+      onNextStep(selectedAddOnObjects); // Pass the selected add-ons to the parent component
     }
   };
 
@@ -34,29 +62,6 @@ function Adds({ onNextStep, onGoBack }) {
 
   // Function to check if the "Next Step" button should be disabled
   const isNextStepDisabled = selectedAddOns.length === 0;
-
-  // Define your add-ons data here
-  const addOns = [
-    {
-      id: 1,
-      label: "Online services",
-      description: "Access to multiple games",
-      price: "1",
-    },
-    {
-      id: 2,
-      label: "Larger storage",
-      description: "Extra 1TB of cloud save",
-      price: "2",
-    },
-    {
-      id: 3,
-      label: "Customizable profile",
-      description: "Custom theme on your profile",
-      price: "2",
-    },
-    // Add more add-ons as needed
-  ];
 
   return (
     <div className="steps_container">
@@ -70,22 +75,12 @@ function Adds({ onNextStep, onGoBack }) {
 
         <div className="addOn_month">
           {addOns.map((addOn) => (
-            <div className="addOnn_btn" key={addOn.id}>
-              <div className="group">
-                <input
-                  type="checkbox"
-                  name="addOnn"
-                  id={`addOn_cont_${addOn.id}`}
-                  value={addOn.id}
-                  onClick={() => handleAddOnClick(addOn.id)} // Toggle add-on selection
-                />
-                <div className="addOn">
-                  <p className="addSize">{addOn.label}</p>
-                  <span>{addOn.description}</span>
-                </div>
-              </div>
-              <p className="price">+$ {addOn.price}</p>
-            </div>
+            <Addon
+              key={addOn.id}
+              addOn={addOn}
+              isSelected={selectedAddOns.includes(addOn.id)}
+              onToggle={handleAddOnClick}
+            />
           ))}
         </div>
 
