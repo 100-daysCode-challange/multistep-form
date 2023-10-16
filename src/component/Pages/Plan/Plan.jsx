@@ -16,10 +16,35 @@ function Plan({ onNextStep, onGoBack }) {
   const handlePlanClick = (planId) => {
     setSelectedPlan(planId);
     setIsNextStepDisabled(false);
+
+    let price = "";
+    let name = "";
+    if (planId === "arcade") {
+      price = getPrice(9, isMonthly);
+      name = "Arcade";
+    } else if (planId === "advance") {
+      price = getPrice(12, isMonthly);
+      name = "Advance";
+    } else if (planId === "pro") {
+      price = getPrice(15, isMonthly);
+      name = "Pro";
+    }
+
+     const billingType = isMonthly ? "Monthly" : "Yearly";
+
+     console.log(`Selected plan: ${name}`);
+     console.log(`Price: ${price}`);
+     console.log(`Billing Type: ${billingType}`);
   };
 
-  const getPrice = (price) =>
-    isMonthly ? `$${price}/mo` : `$${price}/yr 2 months free`;
+  const getPrice = (price) => 
+  { if(isMonthly) {
+    return `$${price}/mo`;
+  }else{
+    const yearlyPrice = price * 10;
+    return `$${yearlyPrice}`;
+  }
+}
 
   const handleNextStep = () => {
     if (!isNextStepDisabled) {
@@ -56,12 +81,15 @@ function Plan({ onNextStep, onGoBack }) {
             >
               <img src={icon} alt={`svg icon ${plan}`} />
               <span className="btnPlan_info">
-                <p>{label}</p>
-                <span className="price">
-                  {getPrice(
-                    plan === "arcade" ? 9 : plan === "advance" ? 12 : 15
-                  )}
-                </span>
+                <div>
+                  <p>{label}</p>
+                  <span className="price">
+                    {getPrice(
+                      plan === "arcade" ? 9 : plan === "advance" ? 12 : 15
+                    )}
+                  </span>
+                </div>
+
                 {!isMonthly && <label className="free">2 months free</label>}
               </span>
             </button>
