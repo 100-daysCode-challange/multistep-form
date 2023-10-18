@@ -1,7 +1,13 @@
 import React from "react";
 import "./summary.css";
 
-function Summary({ onGoBack, onNextStep, handleChangePlan, selectedPlan }) {
+function Summary({
+  onGoBack,
+  onNextStep,
+  handleChangePlan,
+  selectedPlan,
+  selectedAddOns,
+}) {
   const handleGoBack = () => {
     if (onGoBack) {
       onGoBack();
@@ -9,7 +15,6 @@ function Summary({ onGoBack, onNextStep, handleChangePlan, selectedPlan }) {
   };
 
   const handleConfirm = () => {
-    // Assuming you want to advance to step 5 after confirming
     if (onNextStep) {
       onNextStep(5); // Pass the step number where ThankYouPage should be displayed
     }
@@ -21,6 +26,13 @@ function Summary({ onGoBack, onNextStep, handleChangePlan, selectedPlan }) {
     }
   };
 
+  // Calculate the total price, including the plan and selected add-ons
+  const calculateTotalPrice = () => {
+    const planPrice = selectedPlan.price;
+    const addOnPrices = selectedAddOns.map((addOn) => addOn.price);
+    const total = addOnPrices.reduce((acc, price) => acc + price, planPrice);
+    return total;
+  };
 
   return (
     <div className="steps_container">
@@ -45,32 +57,20 @@ function Summary({ onGoBack, onNextStep, handleChangePlan, selectedPlan }) {
                 </label>
               </div>
               <br />
-              <span></span>
-              <div className="summary_flex">
-                <p>Online service</p>
-                <label htmlFor="" id="onlinePrice">
-                  +0$
-                </label>
-              </div>
-              <div className="summary_flex">
-                <p>Larger storage</p>
-                <label htmlFor="" id="storagePrice">
-                  +0$
-                </label>
-              </div>
-              <div className="summary_flex">
-                <p>Customizable profile</p>
-                <label htmlFor="" id="customizablePrice">
-                  +0$
-                </label>
-              </div>
+              {selectedAddOns.map((addOn) => (
+                <div className="summary_flex" key={addOn.id}>
+                  <p>{addOn.addSize}</p>
+                  <label htmlFor="" id={`${addOn.addSize}Price`}>
+                    +{addOn.price}$
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="flexTotal">
             <p id="modeTotal">Total</p>
-            <span id="totalPrice"></span>
-            <span className="dollar">170$</span>
+            <span id="totalPrice">{calculateTotalPrice()}$</span>
           </div>
           <div className="buttonContainerStepFour">
             <button className="goBack" onClick={handleGoBack}>
