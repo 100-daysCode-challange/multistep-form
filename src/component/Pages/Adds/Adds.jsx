@@ -1,58 +1,13 @@
 import React, { useState } from "react";
 import "./add.css";
-import Addon from "./Addon"; // Import the new Addon component
 
-function Adds({ onNextStep, onGoBack }) {
-  const [selectedAddOns, setSelectedAddOns] = useState([]); // Track selected add-ons
-
-  // Define your add-ons data here
-  const addOns = [
-    {
-      id: 1,
-      label: "Online services",
-      description: "Access to multiple games",
-      price: 1,
-    },
-    {
-      id: 2,
-      label: "Larger storage",
-      description: "Extra 1TB of cloud save",
-      price: 2,
-    },
-    {
-      id: 3,
-      label: "Customizable profile",
-      description: "Custom theme on your profile",
-      price: 2,
-    },
-    // Add more add-ons as needed
-  ];
-
-  const handleAddOnClick = (id) => {
-    const selectedAddOn = addOns.find((addon) => addon.id === id);
-
-    if (selectedAddOn) {
-      console.log("Selected Add-On:");
-      console.log("Name:", selectedAddOn.label);
-      console.log("Price:", selectedAddOn.price);
-      console.log("Description:", selectedAddOn.description);
-    }
-
-    const updatedAddOns = selectedAddOns.includes(id)
-      ? selectedAddOns.filter((selected) => selected !== id)
-      : [...selectedAddOns, id];
-    setSelectedAddOns(updatedAddOns);
-  };
-
+function Adds({ onNextStep, onGoBack}) {
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   const handleNextStep = () => {
-    if (selectedAddOns.length > 0) {
-      const selectedAddOnObjects = addOns.filter((addon) =>
-        selectedAddOns.includes(addon.id)
-      );
-      onNextStep(selectedAddOnObjects); // Pass the selected add-ons to the parent component
-    }
+      onNextStep();
   };
+
 
   const handleGoBack = () => {
     if (onGoBack) {
@@ -60,42 +15,97 @@ function Adds({ onNextStep, onGoBack }) {
     }
   };
 
-  // Function to check if the "Next Step" button should be disabled
+  const isAddOnSelected = (id) => selectedAddOns.includes(id);
+
+  const toggleAddOn = (id) => {
+    if (isAddOnSelected(id)) {
+      setSelectedAddOns(selectedAddOns.filter((selected) => selected !== id));
+    } else {
+      setSelectedAddOns([...selectedAddOns, id]);
+    }
+  };
+
   const isNextStepDisabled = selectedAddOns.length === 0;
 
   return (
     <div className="steps_container">
-      <div className="addOnStep_container">
-        <div className="addOn_title">
-          <h1>Pick Add-ons</h1>
-          <p className="description">
-            Add-ons help enhance your gaming experience.
-          </p>
-        </div>
+      <div className="addOn_title">
+        <h1>Pick Add-ons</h1>
+        <p className="description">
+          Add-ons help enhance your gaming experience.
+        </p>
+      </div>
 
-        <div className="addOn_month">
-          {addOns.map((addOn) => (
-            <Addon
-              key={addOn.id}
-              addOn={addOn}
-              isSelected={selectedAddOns.includes(addOn.id)}
-              onToggle={handleAddOnClick}
+      <div className="addOn_month">
+        {/* Checkbox 1 */}
+        <div className="addOnn_btn">
+          <div className="group">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              checked={isAddOnSelected(1)}
+              onChange={() => toggleAddOn(1)}
             />
-          ))}
+            <div className="addOn">
+              <p className="addSize">Online services</p>
+              <span>Access to multiple games</span>
+            </div>
+          </div>
+          <p className="price">+$1</p>
         </div>
 
-        <div className="addOn_btn_container">
-          <button className="goBack" onClick={handleGoBack}>
-            Go back
-          </button>
-          <button
-            className="next_step"
-            onClick={handleNextStep}
-            disabled={isNextStepDisabled}
-          >
-            Next Step
-          </button>
+        {/* Checkbox 2 */}
+        <div className="addOnn_btn">
+          <div className="addOn_month">
+            <div className="group">
+              <input
+                type="checkbox"
+                name={`addOnn-2`}
+                id={`addOn_cont-2`}
+                checked={isAddOnSelected(2)}
+                onChange={() => toggleAddOn(2)}
+              />
+              <div className="addOn">
+                <p className="addSize">Larger storage</p>
+                <span>Extra 1TB of cloud save</span>
+              </div>
+            </div>
+          </div>
+          <p className="price">+$2</p>
         </div>
+        {/* Checkbox 3 */}
+        <div className="addOnn_btn">
+          <div className="addOn_month">
+            <div className="group">
+              <input
+                type="checkbox"
+                name={`addOnn-3`}
+                id={`addOn_cont-3`}
+                checked={isAddOnSelected(3)}
+                onChange={() => toggleAddOn(3)}
+              />
+              <div className="addOn">
+                <p className="addSize">Customizable profile</p>
+                <span>Custom theme on your profile</span>
+              </div>
+            </div>
+          </div>
+          <p className="price">+$2</p>
+        </div>
+      </div>
+
+      <div className="addOn_btn_container">
+        <button className="goBack" onClick={handleGoBack}>
+          Go back
+        </button>
+        <button
+          className="next_step"
+          onClick={handleNextStep}
+          disabled={isNextStepDisabled}
+        >
+          Next Step
+        </button>
       </div>
     </div>
   );

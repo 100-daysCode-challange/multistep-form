@@ -16,46 +16,52 @@ function Plan({ onNextStep, onGoBack }) {
   const handlePlanClick = (planId) => {
     setSelectedPlan(planId);
     setIsNextStepDisabled(false);
-
-    let price = "";
-    let name = "";
-    if (planId === "arcade") {
-      price = getPrice(9, isMonthly);
-      name = "Arcade";
-    } else if (planId === "advance") {
-      price = getPrice(12, isMonthly);
-      name = "Advance";
-    } else if (planId === "pro") {
-      price = getPrice(15, isMonthly);
-      name = "Pro";
-    }
-
-     const billingType = isMonthly ? "Monthly" : "Yearly";
-
-     console.log(`Selected plan: ${name}`);
-     console.log(`Price: ${price}`);
-     console.log(`Billing Type: ${billingType}`);
   };
 
-  const getPrice = (price) => 
-  { if(isMonthly) {
-    return `$${price}/mo`;
-  }else{
-    const yearlyPrice = price * 10;
-    return `$${yearlyPrice}`;
-  }
-}
+  const getPrice = (price) => {
+    if (isMonthly) {
+      return `$${price}/mo`;
+    } else {
+      const yearlyPrice = price * 10;
+      return `$${yearlyPrice}`;
+    }
+  };
 
   const handleNextStep = () => {
     if (!isNextStepDisabled) {
-      onNextStep(selectedPlan);
+      const selectedPlanObject = getSelectedPlanObject(selectedPlan);
+      onNextStep(selectedPlanObject);
+      
+      console.log(selectedPlanObject);
     }
   };
+
+  
 
   const handleGoBack = () => {
     if (onGoBack) {
       onGoBack();
     }
+  };
+
+  const getSelectedPlanObject = (planId) => {
+    if (planId === "arcade") {
+      return {
+        label: "Arcade",
+        price: getPrice(9),
+      };
+    } else if (planId === "advance") {
+      return {
+        label: "Advance",
+        price: getPrice(12),
+      };
+    } else if (planId === "pro") {
+      return {
+        label: "Pro",
+        price: getPrice(15),
+      };
+    }
+    return {}; // Return an empty object as a default
   };
 
   return (
@@ -89,7 +95,6 @@ function Plan({ onNextStep, onGoBack }) {
                     )}
                   </span>
                 </div>
-
                 {!isMonthly && <label className="free">2 months free</label>}
               </span>
             </button>

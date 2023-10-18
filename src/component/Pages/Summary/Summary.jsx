@@ -1,7 +1,7 @@
 import React from "react";
 import "./summary.css";
 
-function Summary({ onGoBack, onNextStep, handleChangePlan }) {
+function Summary({ onGoBack, onNextStep, handleChangePlan, selectedPlan }) {
   const handleGoBack = () => {
     if (onGoBack) {
       onGoBack();
@@ -37,11 +37,11 @@ function Summary({ onGoBack, onNextStep, handleChangePlan }) {
             <div id="month_summary">
               <div className="summary_flex">
                 <div>
-                  <h4 id="summary_mode">Choose a plan</h4>
+                  <h4 id="summary_mode">{selectedPlan.label}</h4>
                   <button onClick={handleChange}>Change</button>
                 </div>
                 <label htmlFor="" id="summary_price">
-                  150$/yr
+                  {selectedPlan.price}
                 </label>
               </div>
               <br />
